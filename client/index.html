@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles/styles.css">
 
     <!-- dependencies -->
-    <script src="bower_components/jquery/underscore-min.js"></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
     <script src="bower_components/jquery/jquery.min.js"></script>
     <!-- your scripts -->
     <script src="scripts/config.js"></script>
@@ -16,6 +16,10 @@
     <div id="main">
       <h1>chatterbox</h1>
       <!-- Your HTML goes here! -->
+      <div id="chats"></div>
+      <textarea class="text-message" rows="3" cols="30"></textarea>
+      <button id="send" class="submit" type="submit">Submit</button>
+      <button id="update" class="update">Update</button>
     </div>
   </body>
 </html>
