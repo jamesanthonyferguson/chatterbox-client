@@ -16,10 +16,12 @@
     <div id="main">
       <h1>chatterbox</h1>
       <!-- Your HTML goes here! -->
-      <div id="chats"></div>
-      <textarea class="text-message" rows="3" cols="30"></textarea>
-      <button id="send" class="submit" type="submit">Submit</button>
+      <form id="myForm">
+        <input type="text" class="message-form" name="message-form"/>
+        <button id="send" class="submit" type="submit">Submit</button>
+      </form>
       <button id="update" class="update">Update</button>
+      <div id="chats"></div>
     </div>
   </body>
 </html>
