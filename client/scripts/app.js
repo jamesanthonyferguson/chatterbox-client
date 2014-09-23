@@ -16,6 +16,10 @@ var app = {
     $('.update').on('click', function(){
       app.clearMessages();
       app.fetch();
+    });
+    $('.div').on('click', '.username', function(){
+      console.log(this);
+      app.addFriend();
     })
   },
   send: function(message){
@@ -74,16 +78,26 @@ var app = {
     for (var i = 0; i < data.results.length; i++) {
       var text = escapeHtml(data.results[i].text);
       var user = escapeHtml(data.results[i].username);
-
-        $('#chats').append(("<div><div class='message'>" +text+ "</div><div class='username'>" +user+ "</div><br/>"))
+      if (app.friends.indexOf(user)!==-1) {
+        user = '<strong>' + user + '</strong>'
+      }
+      $('#chats').append(("<div><div class='message'>" +text+ "</div><div class='username'>" +user+ "</div><br/>"))
     }
   },
 
+  room: 'lobby',
   addRoom: function(room){
     var temp = "<div class="+room+">" +room+ "</div>";
     $('#roomSelect').append(temp);
   },
-  addFriend: function(friend){},
+  friends: [],
+  addFriend: function(friend){
+    console.log("trigger1")
+    if (app.friends.indexOf(friend)===-1) {
+         console.log("trigger2")
+      app.friends.push(friend);
+    }
+  },
   handleSubmit: function(){
     var messagePart = $('#myForm :input')[0].value
     var userpart = String.prototype.slice.call(window.location.search, 10)
@@ -102,8 +116,5 @@ $(document).ready(function() {
     setInterval(function(){
       $('.update').trigger('click');
     }, 5000);
-    setInterval(function(){
-      $('#send').trigger('click')
-    }, 6500)
 });
 
